@@ -10,6 +10,7 @@ let playerScore = 0
 let computerScore = 0 
 
 function playRound (playerSelection, computerSelection) {
+    console.log('1 ', playerSelection, '2 ', computerSelection)
     if (playerSelection === 'rock' && computerSelection === 'scissors') {
         playerScore++
         return 'winner! rock beats scissors'
