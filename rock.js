@@ -41,9 +41,9 @@ function playRound (playerSelection, computerSelection) {
 
 function game () {
     for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt('Hello player. Choose rock, paper, or scissors' , 'Roshambo').toLowerCase
+        const playerSelection = prompt('Hello player. Choose rock, paper, or scissors' , 'Roshambo').toLowerCase()
         const computerSelection = computerPlay()
-        console.log('1 ', playRound(playerSelection, computerSelection))
+        console.log(playRound(playerSelection, computerSelection))
     }
 }
 
