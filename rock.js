@@ -67,8 +67,44 @@ const cats = ['Leapord', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion'];
       //}
     //}
 
-    const bleh = document.querySelector('#bleh');
-    const para = document.createELement('p');
-    para.textContent = 'Hey Im Red!'; 
-    para.style.color = 'blue';
-    bleh.append('para');
+   // const bleh = document.querySelector('#bleh');
+    //const para = document.createELement('p');
+    //para.textContent = 'Hey Im Red!'; 
+    //para.style.color = 'blue';
+    //bleh.append('para');
+
+
+    //const body = document.body
+    //const div = document.createELement('div')
+   // div.innerHTML = "hello"
+  
+   // a p eith red text that says 'hey im red!'
+   const body = document.body 
+  const div = document.createElement("div")
+  body.append(div)
+   const para = document.createElement("p")
+   div.append(para)
+  para.textContent = "hey i am red!"
+  para.style.color = "red"
+
+  //an h3 with blue text that says "im a blue h3!"
+  //const ach = document.createElement("h3")
+  //body.append(ach)
+  //ach.textContent = "im a blue h3!"
+  //ach.style.color = "blue"
+
+  // a div with a black border and a pink background 
+  //const div = documentcreateELement("div")
+  
+  //div.style.cssText = "border: black; backgroundcolor: pink;"
+ // const one = documentcreateELement("h1")
+  //one.textContent = "im a div!"
+  //div.append(one)
+  //const poro = documentcreateELement("p")
+  //poro.textContent = "me too!"
+  //div.append(poro)
+  
+  const btn = document.querySelector('#btn');
+  btn.addEventListener('click', () => {
+    alert("hello!!!!!");
+  });
