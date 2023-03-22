@@ -39,12 +39,36 @@ function playRound (playerSelection, computerSelection) {
     
 }
 
-function game () {
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt('Hello player. Choose rock, paper, or scissors' , 'Roshambo').toLowerCase()
-        const computerSelection = computerPlay()
-        console.log(playRound(playerSelection, computerSelection))
-    }
-}
+//function game () {
+  // for (let i = 0; i < 5; i++) {
+     //   const playerSelection = prompt('Hello player. Choose rock, paper, or scissors' , 'Roshambo').toLowerCase()
+       // const computerSelection = computerPlay()
+        //console.log(playRound(playerSelection, computerSelection))
+    //}
+//}
 
-console.log(game())
+// console.log(game())
+
+
+const cats = ['Leapord', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion'];
+
+// for (let i = 0; i < cats.length; i++) {
+   //  console.log(cats[i]);
+// } 
+ 
+
+// testing putting a statement at the beginning as opposed to at the end with the last 'else' condition //
+
+// for (cat of cats) {
+    //if (cat === 'Caracal') {
+      //  console.log('found it');
+      //} else {
+        //console.log(cat);
+      //}
+    //}
+
+    const bleh = document.querySelector('#bleh');
+    const para = document.createELement('p');
+    para.textContent = 'Hey Im Red!'; 
+    para.style.color = 'blue';
+    bleh.append('para');
