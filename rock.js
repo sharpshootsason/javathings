@@ -60,6 +60,7 @@ function playRound (playerSelection, computerSelection) {
     
 }
 
+<<<<<<< HEAD
 
 
 const updateScores = (playerScore, computerScore) => {
@@ -111,6 +112,9 @@ const checkWinner = (playerScore, computerScore) => {
 
 
 
+=======
+//hello
+>>>>>>> rps-ui
 
 //function game () {
   // for (let i = 0; i < 5; i++) {
