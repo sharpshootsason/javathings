@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
    let operators = document.querySelectorAll('.operator')
 
+   let clear = document.querySelector('.clear')
+
    numbers.forEach(number => number.addEventListener('click', function(e){
       handleNumber(e.target.textContent)
       currentScreen.textContent = currentValue 
@@ -47,6 +49,12 @@ document.addEventListener("DOMContentLoaded", function () {
    function handleOperator(op) {
       operator = op
     previousValue = currentValue
-      curentValue = ''
+      currentValue = ''
 }
+
+clear.addEventListener('click', function (e) {
+   currentScreen.textContent = ''
+   previousScreen.textContent = ''
+})
+
 });
