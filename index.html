@@ -1,48 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title> DOM Manipulation </title>
-        <link rel="stylesheet" href="calc.css">
+        <meta charset="UTF-8">
+        <title> BlackJack Game </title>
+        <link rel="stylsheet" href="blackjack.css">
     </head>
-
     <body>
-
-    <div class="calculator">
-        <div class="toprow">
-            <div class="previousscreen"></div>
-            <div class="currentscreen"></div>
-            <button class="clear">C</button>
+        <h2> Dealer: <span id="dealer-sum"></span></h2>
+        <div id="dealer-cards">
+            <img id="hidden" src="./cards/BACK.png">
         </div>
 
-        <div class="rowone">
-                   <button class="number">1</button>
-                   <button class="number">2</button>
-                   <button class="number">3</button>
-                   <button class="operator">+</button>
-        </div>
+        <h2>Player: <span id="your-sum"></span></h2>
+        <div id="your-cards"></div>
 
-        <div class="rowtwo">
-            <button class="number">4</button>
-            <button class="number">5</button>
-            <button class="number">6</button>
-            <button class="operator">-</button>
-
-        </div>
-
-        <div class="rowthree">
-            <button class="number">7</button>
-            <button class="number">8</button>
-            <button class="number">9</button>
-            <button class="operator">/</button>
-        </div>
-
-    </div>
-
-        <script src="calc.js"></script>
-        
+        <button id="hit">Hit</button>
+        <button id="stay">Stay</button>
+        <p id="results"></p>
 
 
-      
+        <script src="blackjack.js"></script>
     </body>
-
 </html>
