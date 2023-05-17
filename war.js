@@ -20,7 +20,7 @@ let aryDiamonds = ['2-D.png', '3-D.png', '4-D.png','5-D.png', '6-D.png','7-D.png
 function startGame() {
 
     document.querySelector('#next').addEventListener('click', function() {
-        once:true;
+        //once:true;
 
         let suit1 = Math.ceil(Math.random() * 4)
         let suit2 = Math.ceil(Math.random() * 4)
