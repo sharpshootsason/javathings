@@ -1,3 +1,5 @@
+
+const cardGame = [
 let aryClubs = ['2-C.png', '3-C.png', '4-C.png','5-C.png', '6-C.png','7-C.png', '8-C.png', '9-C.png', '10-C.png',
  'J-C.png', 'Q-C.png', 'K-C.png', 'A-C.png']
 let aryDiamonds = ['2-D.png', '3-D.png', '4-D.png','5-D.png', '6-D.png','7-D.png', '8-D.png', '9-D.png', '10-D.png',
@@ -5,7 +7,7 @@ let aryDiamonds = ['2-D.png', '3-D.png', '4-D.png','5-D.png', '6-D.png','7-D.png
  let aryHearts = ['2-H.png', '3-H.png', '4-H.png','5-H.png', '6-H.png','7-H.png', '8-H.png', '9-H.png', '10-H.png',
  'J-H.png', 'Q-H.png', 'K-H.png', 'A-H.png']
  let arySpades = ['2-S.png', '3-S.png', '4-S.png','5-S.png', '6-S.png','7-S.png', '8-S.png', '9-S.png', '10-S.png',
- 'J-S.png', 'Q-S.png', 'K-S.png', 'A-S.png']
+ 'J-S.png', 'Q-S.png', 'K-S.png', 'A-S.png'] ]
 
 
  let playerScore = 0
@@ -16,11 +18,12 @@ let aryDiamonds = ['2-D.png', '3-D.png', '4-D.png','5-D.png', '6-D.png','7-D.png
     startGame();
  })
 
+cardGame.forEach((card) => card.addEventListener('click')
 
 function startGame() {
 
     document.querySelector('#next').addEventListener('click', function() {
-        //once:true;
+        
 
         let suit1 = Math.ceil(Math.random() * 4)
         let suit2 = Math.ceil(Math.random() * 4)
