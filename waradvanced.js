@@ -5,16 +5,19 @@
 
 
 let deck;
+let card1;
+let card2;
 
 let playerScore = 0
 let computerScore = 0
 
 
-window.onload = function () {
+document.querySelector('#start').addEventListener('click', function () {
     buildDeck();
     shuffleDeck();
-    startGame();
-}
+})
+    
+
 
 
 function buildDeck() {
@@ -42,21 +45,25 @@ function shuffleDeck() {
     }
 }
 
-function startGame() {
 
-        // for player 2
-        let cardImg = document.createElement('img')
-        let card = deck.pop();
-        cardImg.src = './cards/' + card + ".png"
-        document.getElementById('card2').append(cardImg);
+
+
+document.querySelector('#next').addEventListener('click', startGame)
+
+    function startGame() {
+    let cardImg = document.createElement('img')
+    let randomDraw = Math.floor(Math.random() * 52)
+    card2 = deck[randomDraw]
+
+    //let card = deck.pop();
+    cardImg.src = './cards/' + card2 + ".png"
+    document.getElementById('card2').append(cardImg);
     
-        // for the player1
-   
-        let cardImg = document.createElement('img');
-        let card = deck.pop(); 
-        cardImg.src = './cards/' + card + '.png';
-      
-        document.getElementById('card1').append(cardImg);
+    // for the player1
+
+    card = deck[randomDraw]
+    //let card = deck.pop(); 
+    cardImg.src = './cards/' + card + '.png';
+  
+    document.getElementById('card1').append(cardImg);
     }
-
-
