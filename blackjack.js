@@ -9,11 +9,22 @@ let deck;
 
 let canHit = true;
 
-window.onload = function () {
-    buildDeck();
+let cardImg = document.createElement('img');
+
+const yourCards = document.getElementById('your-cards')
+
+const dealerCards = document.getElementById('dealer-cards')
+
+const nextRound = document.getElementById('next-round')
+
+
+ const startRound = document.getElementById('start-round')
+
+startRound.addEventListener('click', function() {
+  buildDeck();
     shuffleDeck();
     startGame();
-}
+})
 
 
 function buildDeck() {
@@ -24,7 +35,7 @@ function buildDeck() {
 
     for (let i = 0; i < types.length; i++) {
         for (let j = 0; j < values.length; j++) {
-            deck.push(values[j] + '-' + types[i]); // this is useful now that the array matches the card file name
+            deck.push(values[j] + '-' + types[i]); // this is useful now that the array matches the card file name, 2-C, 3-C... 2-S, 3-S...
         }
     }
 }
@@ -45,21 +56,21 @@ function startGame() {
     dealerSum += getValue(hidden);
     dealerAceCount += checkAce(hidden);
     while (dealerSum < 17) {
-        let cardImg = document.createElement('img')
-        let card = deck.pop();
+        let cardImg = document.createElement('img'); //
+        let card = deck.pop(); // takes an array out ['2-C','3-C','4-C' . . .]
         cardImg.src = './cards/' + card + ".png"
-        dealerSum += getValue(card)
+        dealerSum += getValue(card) // Ex: '4-C'
         dealerAceCount += checkAce(card)
-        document.getElementById('dealer-cards').append(cardImg);
+       dealerCards.append(cardImg); // goes into the div that was edited on css (to be centered, etc)
     }
         // for the player
     for (let i = 0; i < 2; i++) {
-        let cardImg = document.createElement('img');
+       let cardImg = document.createElement('img');
         let card = deck.pop(); // we declare it again because its pertaining to in the loop
         cardImg.src = './cards/' + card + '.png';
         yourSum += getValue(card);
         yourAceCount += checkAce(card);
-        document.getElementById('your-cards').append(cardImg);
+       yourCards.append(cardImg);
     }
 
     document.getElementById('hit').addEventListener('click', Hit);
@@ -67,20 +78,24 @@ function startGame() {
     document.getElementById('stay').addEventListener('click', Stay);
 }
 
+
+// making values/integers: this is where we declare from the deck what Aces, K, Q, And J are into integers 
 function getValue(card) {
-    let data = card.split('-');
-    let value = data[0]
+    let data = card.split('-'); // splits ['4-C'] into ['4', 'C']
+    let value = data[0] // [0] index of zero indicates first array, so only 4
 
     if (isNaN(value)) {
-        if (value =='A'){
+        if (value =='A'){ 
             return 11;
         } 
         return 10;
     }
 
-    return parseInt(value);
+    return parseInt(value); // if its not an Ace value, return the value, parseint makes it into a JS integer that can be used for adding(sums)
 }
 
+
+// where we count the aces
 function checkAce(card) {
     if (card[0] == 'A') {
         return 1;
@@ -92,12 +107,12 @@ function Hit() {
     if (!canHit) {
         return;
     }
-    let cardImg = document.createElement('img');
+    let cardImg = document.createElement('img'); // have to keep declaring it so that it creates the tag when we fire the function
     let card = deck.pop(); // we declare it again because its pertaining to in the loop
     cardImg.src = './cards/' + card + '.png';
     yourSum += getValue(card);
     yourAceCount += checkAce(card);
-    document.getElementById('your-cards').append(cardImg);
+    yourCards.append(cardImg);
 
     if (reduceAce(yourSum, yourAceCount) > 21) {
         canHit = false;
@@ -135,17 +150,35 @@ document.getElementById('results').innerText = message;
 document.getElementById('dealer-sum').innertext = dealerSum; // the total 
 document.getElementById('your-sum').innerText = yourSum; // the total
 
+
+
 }
 
 
-
+// this allows us to change 11 (ace) to 1 (ace) depending on the conditions of our ace count (checkace) and our sum (playerSum)
 function reduceAce(playerSum, playerAceCount) {
     while (playerSum > 21 && playerAceCount > 0) {
         playerSum -= 10;
-        playerAceCount -= 1; // if yourAceCount was 2, it is now 1 (in terms of keeping track of YOUR aces
+        playerAceCount -= 1; // if yourAceCount was 2, it is now 1 (in terms of keeping track of YOUR aces)
     }
     return playerSum; // this is our else
 }
 
 
 
+// need to figure out how to reset, then add up the rounds maybe via playerScore and compScore method
+nextRound.addEventListener('click', function() {
+   // yourCards.remove(cardImg);
+   // dealerCards.remove(cardImg);
+   cardImg = ''
+      dealerSum = 0;
+    yourSum = 0;
+     dealerAceCount = 0;
+    yourAceCount = 0;
+    message = '' 
+
+    buildDeck();
+    shuffleDeck();
+    startGame();
+
+ })
