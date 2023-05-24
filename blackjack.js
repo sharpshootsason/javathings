@@ -33,6 +33,8 @@ function buildDeck() {
 
     deck = []
 
+    //double for loop : it will go to one index of type and then loop through every array of values (it finalize when we deck.push)
+    //so for every 'types', it will look through all the values, and it will do that for each individual index of 'types'
     for (let i = 0; i < types.length; i++) {
         for (let j = 0; j < values.length; j++) {
             deck.push(values[j] + '-' + types[i]); // this is useful now that the array matches the card file name, 2-C, 3-C... 2-S, 3-S...
@@ -40,14 +42,16 @@ function buildDeck() {
     }
 }
 
-function shuffleDeck() {
+function shuffleDeck() { 
     for (let i = 0; i < deck.length; i++) {
         let j = Math.floor(Math.random() * deck.length);
 
         let temp = deck[i]
         deck[i] = deck [j]
         deck[j] = temp;
-    }
+    } // by declaring deck[i], i am picking from the whole deck in its correct order, by looping through deck [j] i am picking out
+    // a random index . by swapping it, i am saying that the random index switches places with the ordered index, thus when the for loop
+    // is complete, I am scrambled the whole order of the deck.
 }
 
 function startGame() {
