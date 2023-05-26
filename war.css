@@ -1,0 +1,10 @@
+body {
+    margin: 1px;
+    display: grid;
+    grid-template-columns: repeat(2, 4rem);
+    grid-template-rows: max-content;
+    gap: .5rem;
+    cursor: pointer;
+    justify-content: center;
+    padding-top: 1rem;
+  }

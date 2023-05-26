@@ -14,6 +14,9 @@ let aryDiamonds = ['2-D.png', '3-D.png', '4-D.png','5-D.png', '6-D.png','7-D.png
  let computerScore = 0
 
 
+
+
+
  document.querySelector("#start").addEventListener('click', function() {
     startGame();
  })
@@ -23,6 +26,7 @@ let aryDiamonds = ['2-D.png', '3-D.png', '4-D.png','5-D.png', '6-D.png','7-D.png
 function startGame() {
 
     document.querySelector('#next').addEventListener('click', function() {
+
         
 
         let suit1 = Math.ceil(Math.random() * 4)
@@ -30,13 +34,9 @@ function startGame() {
         let card1 = Math.floor(Math.random() * 13)
         let card2 = Math.floor(Math.random() * 13)
     
-        let cardSelected1
            
         console.log(suit1)
         console.log(card1)
-       
-
-        for (let i = 0; i < 52; i++) {
 
             
            
@@ -54,6 +54,7 @@ function startGame() {
             }
         // we console.log to help us de-bug
             document.getElementById("card1").src = './cards/' + cardSelected1
+           
         
             if (suit2 == '1') {
                 cardSelected1 = aryClubs[card2]
@@ -69,6 +70,7 @@ function startGame() {
              }
         
              document.getElementById("card2").src = './cards/' + cardSelected1
+      
         
         
             if (card1 > card2) {
@@ -79,7 +81,7 @@ function startGame() {
                 playerScore ++
                 computerScore ++
             }
-    }
+
 
 
 
@@ -94,5 +96,7 @@ function startGame() {
     }
 
     document.getElementById('results').innerText = winner
-    })
+    
+
+   })
 }
