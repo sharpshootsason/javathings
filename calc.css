@@ -1,0 +1,17 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+
+.btn {
+    height: 50px;
+    width: 50px;
+    margin: 15px;
+    font-size: 40px
+}
