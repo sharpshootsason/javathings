@@ -1,10 +1,15 @@
 body {
-    margin: 1px;
-    display: grid;
-    grid-template-columns: repeat(2, 4rem);
-    grid-template-rows: max-content;
-    gap: .5rem;
-    cursor: pointer;
-    justify-content: center;
-    padding-top: 1rem;
-  }
+  margin: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  align-content: center;
+  background-color: green;
+}
+
+
+img {
+  height: 200px;
+  width: 150px;
+  margin: 1px;
+}
+

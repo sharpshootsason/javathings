@@ -37,6 +37,8 @@ function startGame() {
            
         console.log(suit1)
         console.log(card1)
+        console.log(suit2)
+        console.log(card2)
 
             
            
@@ -77,10 +79,10 @@ function startGame() {
             playerScore ++
             } else if (card1 < card2) {
             computerScore ++
-            } else if (card1 == card2) {
+            } else (card1 == card2) 
                 playerScore ++
                 computerScore ++
-            }
+            })
 
 
 
@@ -98,5 +100,5 @@ function startGame() {
     document.getElementById('results').innerText = winner
     
 
-   })
+
 }
