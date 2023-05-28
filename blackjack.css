@@ -5,14 +5,14 @@ body {
 }
 
 #dealer-cards img {
-    height: 175px;
-    width: 125px;
+    height: 200px;
+    width: 150px;
     margin: 1px;
 }
 
 #your-cards img {
-    height: 175px;
-    width: 125px;
+    height: 200px;
+    width: 150px;
     margin: 1px;
 }
 

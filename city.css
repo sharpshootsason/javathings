@@ -1,12 +1,12 @@
 :root{
     --building-color1: #b44141;
     --building-color2: #39b68c;
-    --building-color3: #000;  
-    --building-color4: hsl(0, 0%, 0%); 
-    --window-color1: rgb(20, 19, 19);
-    --window-color2: white;
-    --window-color3: white;
-    --window-color4: white;
+    --building-color3: rgb(193, 245, 6);  
+    --building-color4: hsl(184, 100%, 37%); 
+    --window-color1: rgb(163, 133, 133);
+    --window-color2: rgb(253, 253, 253);
+    --window-color3: rgb(255, 255, 255);
+    --window-color4: rgb(189, 180, 180);
 }
 
 
@@ -34,18 +34,11 @@ body {
     height: 70%;
 }
 
-.sky {
-        background: radial-gradient(
-            circle closest-corner at 15% 15%,
-            #ff3f, 
-            #ff3f 20%,
-            rgb(42, 133, 238) 21%,
-            rgb(114, 227, 247) (51, 207, 255) 100%
-        );
-}
+
 
 .bb1a {
     width: 70%;
+
     
 }
 
@@ -332,5 +325,9 @@ display: flex;
     );
 }
 
-
-
+.vegas {
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+ 
+}

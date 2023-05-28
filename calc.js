@@ -71,6 +71,8 @@ function calculate() {
         previousValue -= currentValue; 
     } else if (operator === '/') {
         previousValue /= currentValue
+    } else if (operator === 'x') {
+        previousValue *= currentValue
     }
 
     previousValue = previousValue.toString() // current and previous value now hold the same values but we only equal the previous value to the text content
