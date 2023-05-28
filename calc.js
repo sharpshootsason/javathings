@@ -1,3 +1,6 @@
+
+
+
 let currentValue = ''
 let previousValue = ''
 let operator = ''
@@ -12,14 +15,14 @@ document.addEventListener('DOMContentLoaded', function() {
     let equal = document.querySelector(".equal")
     
     numbers.forEach((number) => number.addEventListener('click', function(e) {
-        handleNumber(e.target.textContent) // the text content of the target we click
+        handleNumber(e.target.textContent) // the text content of the target we click., the text content becomes the currentvalue
         currentScreen.textContent = currentValue // get this value created from handleNumber()
     }))
 
 
     operators.forEach(op => op.addEventListener('click', function(e) {
         handleOperator(e.target.textContent) // this just actualizes the text content into a value, since the text content in the buttons are numbers, and so forth
-        previousScreen.textContwnt = previousValue + '' + operator // via handleOperator our previousValue 's value is what currentValue was
+        previousScreen.textContent = previousValue + '' + operator // via handleOperator our previousValue 's value is what currentValue was
         currentScreen.textContent = currentValue
     }))
 
@@ -36,8 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     equal.addEventListener('click', function() {
         calculate()
-        previousScreeen.textContent = ''
-        currentScreen.textContent = previousValue //the current screen gets its value back (differently) once the calculate() function is called
+        previousScreen.textContent = ''
+        currentScreen.textContent = previousValue //the current screen shows the value we added to the previousValue variable 
     })
 
 
@@ -59,7 +62,7 @@ function handleOperator (op) {
 
 
 function calculate() {
-    previousValue = Number(previousValue)
+    previousValue = Number(previousValue) // so that we can math the numbers
     currentValue = Number(currentValue)
 
     if (operator === '+') {
@@ -70,6 +73,6 @@ function calculate() {
         previousValue /= currentValue
     }
 
-    previousValue = previousValue.toString()
-    currentValue = previousValue.toString()
-}
+    previousValue = previousValue.toString() // current and previous value now hold the same values but we only equal the previous value to the text content
+    currentValue = previousValue.toString() // make it to string so that we can let it show in the html text content
+} 

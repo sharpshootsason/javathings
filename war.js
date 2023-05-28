@@ -13,6 +13,7 @@ let aryDiamonds = ['2-D.png', '3-D.png', '4-D.png','5-D.png', '6-D.png','7-D.png
  let playerScore = 0
  let computerScore = 0
 
+ let winner 
 
 
 
@@ -24,8 +25,6 @@ let aryDiamonds = ['2-D.png', '3-D.png', '4-D.png','5-D.png', '6-D.png','7-D.png
 
 
 function startGame() {
-
-    document.querySelector('#next').addEventListener('click', function() {
 
         
 
@@ -74,31 +73,20 @@ function startGame() {
              document.getElementById("card2").src = './cards/' + cardSelected1
       
         
-        
+             winner = ""
+      
             if (card1 > card2) {
-            playerScore ++
+              winner = "Phew! You win!"
             } else if (card1 < card2) {
-            computerScore ++
+              winner = "oh no, you lost!"
             } else (card1 == card2) 
-                playerScore ++
-                computerScore ++
-            })
+               winner = "Woah, its a tie!"
+               document.getElementById('results').innerText = winner
 
+         }
+         
 
-
-
-    let winner = ""
-
-    if (playerScore > computerScore) {
-       winner = "Phew! You win!"
-    } else if (computerScore > playerScore) {
-        winner = "oh no, you lost!"
-    } else if (playerScore === computerScore) {
-        winner = "Woah, its a tie- thats pretty rare!"
-    }
-
-    document.getElementById('results').innerText = winner
-    
-
-
-}
+        // document.querySelector('#next').addEventListener('click', function() {
+       // winner = ""
+       //     startGame()
+       //  })

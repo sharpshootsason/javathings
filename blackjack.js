@@ -57,8 +57,10 @@ function shuffleDeck() {
 function startGame() {
     hidden = deck.pop();
         // for the dealer
-    dealerSum += getValue(hidden);
+        // first we establish the dealerSum
+    dealerSum += getValue(hidden); 
     dealerAceCount += checkAce(hidden);
+    // then we add conditions to the dealersum and these conditions allow how many cards to append to our html div
     while (dealerSum < 17) {
         let cardImg = document.createElement('img'); //
         let card = deck.pop(); // takes an array out ['2-C','3-C','4-C' . . .]
@@ -67,7 +69,7 @@ function startGame() {
         dealerAceCount += checkAce(card)
        dealerCards.append(cardImg); // goes into the div that was edited on css (to be centered, etc)
     }
-        // for the player
+        // for the player , getting the values for the player
     for (let i = 0; i < 2; i++) {
        let cardImg = document.createElement('img');
         let card = deck.pop(); // we declare it again because its pertaining to in the loop
@@ -80,6 +82,7 @@ function startGame() {
     document.getElementById('hit').addEventListener('click', Hit);
 
     document.getElementById('stay').addEventListener('click', Stay);
+
 }
 
 
@@ -129,25 +132,25 @@ dealerSum = reduceAce(dealerSum, dealerAceCount);
 yourSum = reduceAce(yourSum, yourAceCount);
 
 canHit = false;
-
+// for the dealer 
 document.getElementById('hidden').src = './cards/' + hidden + '.png';
 
 let message = ""
 
 if (yourSum > 21) {
-    message = "You Lose!"; 
+    message = "You Lose! refresh to start again"; 
 }
 else if (dealerSum > 21) {
-    message = 'You Win!';
+    message = 'You Win! refresh to start again';
 }
 else if (yourSum == dealerSum) {
-    message = 'Tie';
+    message = 'Tie! refresh to start again';
 }
 else if (yourSum > dealerSum) {
-    message = 'You Win!' // now its already ruled out in the first if statment that you cannot win at all if player is over 21 even if dealer is too
+    message = 'You Win! refresh to start again' // now its already ruled out in the first if statment that you cannot win at all if player is over 21 even if dealer is too
 }
 else if (yourSum < dealerSum) {
-    message = 'You Lose!'
+    message = 'You Lose! refresh to start again'
 }
 
 document.getElementById('results').innerText = message;
@@ -160,29 +163,27 @@ document.getElementById('your-sum').innerText = yourSum; // the total
 
 
 // this allows us to change 11 (ace) to 1 (ace) depending on the conditions of our ace count (checkace) and our sum (playerSum)
+// this is why we counted the aces
 function reduceAce(playerSum, playerAceCount) {
     while (playerSum > 21 && playerAceCount > 0) {
         playerSum -= 10;
         playerAceCount -= 1; // if yourAceCount was 2, it is now 1 (in terms of keeping track of YOUR aces)
     }
-    return playerSum; // this is our else
+    return playerSum; // this is our else statement
 }
 
 
 
-// need to figure out how to reset, then add up the rounds maybe via playerScore and compScore method
-nextRound.addEventListener('click', function() {
-   // yourCards.remove(cardImg);
-   // dealerCards.remove(cardImg);
-   cardImg = ''
-      dealerSum = 0;
-    yourSum = 0;
-     dealerAceCount = 0;
-    yourAceCount = 0;
-    message = '' 
+/* nextRound.addEventListener('click', function() {
+    yourCards.remove(cardImg);
+    dealerCards.remove(cardImg);
+    cardImg = ''
+       dealerSum = 0;
+     yourSum = 0;
+      dealerAceCount = 0;
+     yourAceCount = 0;
+     message = ''
+  }) */
 
-    buildDeck();
-    shuffleDeck();
-    startGame();
 
- })
+
