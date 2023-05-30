@@ -48,7 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function handleNumber(num) {
-    currentValue += num
+    currentValue = num // e.target.textContent =  num
+    //+= allows us to keep adding the values side by side
 }
 
 
