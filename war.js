@@ -15,6 +15,8 @@ let aryDiamonds = ['2-D.png', '3-D.png', '4-D.png','5-D.png', '6-D.png','7-D.png
 
  let winner 
 
+ let cardOne = document.getElementById("card1")
+let cardTwo = document.getElementById("card2")
 
 
 
@@ -52,7 +54,7 @@ function startGame() {
                 cardSelected1 = arySpades[card1]
              }
          // we console.log to help us de-bug
-             document.getElementById("card1").src = './cards/' + cardSelected1
+             cardOne.src = './cards/' + cardSelected1
             
          
              if (suit2 == '1') {
@@ -68,7 +70,7 @@ function startGame() {
                  cardSElected1 = arySpades[card2]
               }
          
-              document.getElementById("card2").src = './cards/' + cardSelected1
+             cardTwo.src = './cards/' + cardSelected1
        
             //  if (card1 > card2) {
               // playerScore ++
@@ -92,12 +94,20 @@ function startGame() {
 
                
           }
+
+      
           
       
 
         
 
-        // document.querySelector('#next').addEventListener('click', function() {
-       // winner = ""
-       //     startGame()
-       //  })
+     //   document.querySelector('#next').addEventListener('click', function() {
+     //   clearCards()
+      //   })
+
+       //  function clearCards() {
+        //    message = ""
+        //    cardOne.removeChild('./cards/' + cardSelected1)
+      //      cardTwo.removeChild('./cards/' + cardSelected1)
+        //    startGame()
+       //  }

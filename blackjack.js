@@ -11,14 +11,14 @@ let canHit = true;
 
 let cardImg = document.createElement('img');
 
-const yourCards = document.getElementById('your-cards')
+const yourCards = document.getElementById('your-cards') //grabbing the divs
 
 const dealerCards = document.getElementById('dealer-cards')
 
 const nextRound = document.getElementById('next-round')
 
 
- const startRound = document.getElementById('start-round')
+ const startRound = document.getElementById('start-round') //button
 
 startRound.addEventListener('click', function() {
   buildDeck();
@@ -43,7 +43,7 @@ function buildDeck() {
 }
 
 function shuffleDeck() { 
-    for (let i = 0; i < deck.length; i++) {
+    for (let i = 0; i < deck.length; i++) { // after we label the deck variable, we modify it to be disordered
         let j = Math.floor(Math.random() * deck.length);
 
         let temp = deck[i]
@@ -55,26 +55,32 @@ function shuffleDeck() {
 }
 
 function startGame() {
-    hidden = deck.pop();
+    hidden = deck.pop(); // selects random array
         // for the dealer
         // first we establish the dealerSum
-    dealerSum += getValue(hidden); 
-    dealerAceCount += checkAce(hidden);
-    // then we add conditions to the dealersum and these conditions allow how many cards to append to our html div
-    while (dealerSum < 17) {
-        let cardImg = document.createElement('img'); //
-        let card = deck.pop(); // takes an array out ['2-C','3-C','4-C' . . .]
+        // hidden becomes the back.png card, we reveal this card later when we hit stay
+    dealerSum += getValue(hidden); //whatever random array .pop() gives us puts the value into an integer, hence dealerSum += returned integer based on components of the array
+    
+    dealerAceCount += checkAce(hidden); 
+
+
+    //its a loop so it will keep doing this under it hits over 17, it will go through every action and then repeat
+    while (dealerSum < 17) { // these actions below are performed as long as dealersum is less than 17, notice
+        // the += so that we are continually adding the cards while equaling the value
+        let cardImg = document.createElement('img'); 
+        let card = deck.pop(); // takes an array out ['2-C','3-C','4-C' . . .] 
         cardImg.src = './cards/' + card + ".png"
-        dealerSum += getValue(card) // Ex: '4-C'
+        dealerSum += getValue(card) // Ex: '4-C' , the += adds the sum for us when each card gets popped
         dealerAceCount += checkAce(card)
-       dealerCards.append(cardImg); // goes into the div that was edited on css (to be centered, etc)
+       dealerCards.append(cardImg); // we are popping cards and appending them as long as the dealersum is less than 17
+       // by appending, we are not overriding, we are stacking img tags under an already created html tag
     }
         // for the player , getting the values for the player
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 2; i++) { // ill always get 2 cards immediately, the hit function is what will give me the extra card
        let cardImg = document.createElement('img');
         let card = deck.pop(); // we declare it again because its pertaining to in the loop
         cardImg.src = './cards/' + card + '.png';
-        yourSum += getValue(card);
+        yourSum += getValue(card); //getVAlue and checkAce is modifying the array into a value for our counts
         yourAceCount += checkAce(card);
        yourCards.append(cardImg);
     }
@@ -87,7 +93,7 @@ function startGame() {
 
 
 // making values/integers: this is where we declare from the deck what Aces, K, Q, And J are into integers 
-function getValue(card) {
+function getValue(card) { // this is where we break down the array to get the value
     let data = card.split('-'); // splits ['4-C'] into ['4', 'C']
     let value = data[0] // [0] index of zero indicates first array, so only 4
 
@@ -111,9 +117,12 @@ function checkAce(card) {
 }
 
 function Hit() {
-    if (!canHit) {
+    if (!canHit) { // remember, canHit is automatically true in boolean, so we are establishing first what happens if it is false, 
+        //which is it returns and does nothing
         return;
-    }
+    } // else (when its normal)
+
+    // we had the while loop take care of the dealer cards, the hit() function is just for the player, in which this is where we gamble
     let cardImg = document.createElement('img'); // have to keep declaring it so that it creates the tag when we fire the function
     let card = deck.pop(); // we declare it again because its pertaining to in the loop
     cardImg.src = './cards/' + card + '.png';
@@ -121,19 +130,21 @@ function Hit() {
     yourAceCount += checkAce(card);
     yourCards.append(cardImg);
 
-    if (reduceAce(yourSum, yourAceCount) > 21) {
-        canHit = false;
+    if (reduceAce(yourSum, yourAceCount) > 21) { // once the count becomes greater than 21
+        // we are using reduceAce to modify our sum in accordance to our aces, giving us a chance to change the ace to value of 1 if needed
+        canHit = false; // hence, it returns and does nothing, the button doesnt work anymore
     }
 }
 
 
 function Stay() {
-dealerSum = reduceAce(dealerSum, dealerAceCount);
+dealerSum = reduceAce(dealerSum, dealerAceCount); // now we are equating the sums to reduce ace, to MODIFY OUR SUMS in accordance of if we hold an ace
 yourSum = reduceAce(yourSum, yourAceCount);
 
 canHit = false;
 // for the dealer 
-document.getElementById('hidden').src = './cards/' + hidden + '.png';
+document.getElementById('hidden').src = './cards/' + hidden + '.png'; //turns the BCK.png to an actual card AND it has already been added to the dealer sum as shown above
+// we are just revealing what the value/card is here by changing the src to the originally deck.pop() hidden card 
 
 let message = ""
 
@@ -147,7 +158,7 @@ else if (yourSum == dealerSum) {
     message = 'Tie! refresh to start again';
 }
 else if (yourSum > dealerSum) {
-    message = 'You Win! refresh to start again' // now its already ruled out in the first if statment that you cannot win at all if player is over 21 even if dealer is too
+    message = 'You Win! refresh to start again' // now its already ruled out in the first if statement that you cannot win at all if player is over 21 even if dealer is too
 }
 else if (yourSum < dealerSum) {
     message = 'You Lose! refresh to start again'
