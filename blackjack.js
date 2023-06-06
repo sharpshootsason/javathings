@@ -9,7 +9,7 @@ let deck;
 
 let canHit = true;
 
-let cardImg = document.createElement('img');
+let cardImg = document.createElement('img'); // creating an <img> tag to append 
 
 const yourCards = document.getElementById('your-cards') //grabbing the divs
 
@@ -76,7 +76,7 @@ function startGame() {
        // by appending, we are not overriding, we are stacking img tags under an already created html tag
     }
         // for the player , getting the values for the player
-    for (let i = 0; i < 2; i++) { // ill always get 2 cards immediately, the hit function is what will give me the extra card
+    for (let i = 0; i < 2; i++) { // itll always get 2 cards immediately, the hit function is what will give me the extra card
        let cardImg = document.createElement('img');
         let card = deck.pop(); // we declare it again because its pertaining to in the loop
         cardImg.src = './cards/' + card + '.png';
@@ -104,7 +104,8 @@ function getValue(card) { // this is where we break down the array to get the va
         return 10;
     }
 
-    return parseInt(value); // if its not an Ace value, return the value, parseint makes it into a JS integer that can be used for adding(sums)
+    return parseInt(value); // if its not an Ace value, return the value, parseint makes it into a JS integer that can be used for adding(sums) 
+    // this is how we are able to add the sum immediately because using parseInt we are changing the string to a number.
 }
 
 
@@ -138,13 +139,13 @@ function Hit() {
 
 
 function Stay() {
-dealerSum = reduceAce(dealerSum, dealerAceCount); // now we are equating the sums to reduce ace, to MODIFY OUR SUMS in accordance of if we hold an ace
+dealerSum = reduceAce(dealerSum, dealerAceCount); // now we are equating the sums to reduceAce, to MODIFY OUR SUMS in accordance of if we hold an ace
 yourSum = reduceAce(yourSum, yourAceCount);
 
-canHit = false;
+canHit = false; // can't hit anymore
 // for the dealer 
 document.getElementById('hidden').src = './cards/' + hidden + '.png'; //turns the BCK.png to an actual card AND it has already been added to the dealer sum as shown above
-// we are just revealing what the value/card is here by changing the src to the originally deck.pop() hidden card 
+// we are just revealing** what the value/card is here by changing the src to the originally deck.pop() hidden card 
 
 let message = ""
 
