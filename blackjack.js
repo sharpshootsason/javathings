@@ -60,11 +60,12 @@ function startGame() {
         // first we establish the dealerSum
         // hidden becomes the back.png card, we reveal this card later when we hit stay
     dealerSum += getValue(hidden); //whatever random array .pop() gives us puts the value into an integer, hence dealerSum += returned integer based on components of the array
-    
+    //getVAlue transfers the array into an integer value
     dealerAceCount += checkAce(hidden); 
 
 
     //its a loop so it will keep doing this under it hits over 17, it will go through every action and then repeat
+    // remember right now dealer sum has a value because of hidden ^^^
     while (dealerSum < 17) { // these actions below are performed as long as dealersum is less than 17, notice
         // the += so that we are continually adding the cards while equaling the value
         let cardImg = document.createElement('img'); 
@@ -73,6 +74,7 @@ function startGame() {
         dealerSum += getValue(card) // Ex: '4-C' , the += adds the sum for us when each card gets popped
         dealerAceCount += checkAce(card)
        dealerCards.append(cardImg); // we are popping cards and appending them as long as the dealersum is less than 17
+       // it stops once it hits over 17
        // by appending, we are not overriding, we are stacking img tags under an already created html tag
     }
         // for the player , getting the values for the player
@@ -94,8 +96,8 @@ function startGame() {
 
 // making values/integers: this is where we declare from the deck what Aces, K, Q, And J are into integers 
 function getValue(card) { // this is where we break down the array to get the value
-    let data = card.split('-'); // splits ['4-C'] into ['4', 'C']
-    let value = data[0] // [0] index of zero indicates first array, so only 4
+    let data = card.split('-'); // splits ['4-C'] into ['4', 'C'] , remember card is just a single index that we are splitting into 2
+    let value = data[0] // [0] index of zero indicates first array, so only 4 (not C)
 
     if (isNaN(value)) {
         if (value =='A'){ 
@@ -120,14 +122,14 @@ function checkAce(card) {
 function Hit() {
     if (!canHit) { // remember, canHit is automatically true in boolean, so we are establishing first what happens if it is false, 
         //which is it returns and does nothing
-        return;
-    } // else (when its normal)
+        return; // meaning it wont add a card like said below
+    } // else 
 
     // we had the while loop take care of the dealer cards, the hit() function is just for the player, in which this is where we gamble
     let cardImg = document.createElement('img'); // have to keep declaring it so that it creates the tag when we fire the function
     let card = deck.pop(); // we declare it again because its pertaining to in the loop
     cardImg.src = './cards/' + card + '.png';
-    yourSum += getValue(card);
+    yourSum += getValue(card); //however since these sums and counts are global variables, it just keeps getting added
     yourAceCount += checkAce(card);
     yourCards.append(cardImg);
 
@@ -177,7 +179,7 @@ document.getElementById('your-sum').innerText = yourSum; // the total
 // this allows us to change 11 (ace) to 1 (ace) depending on the conditions of our ace count (checkace) and our sum (playerSum)
 // this is why we counted the aces
 function reduceAce(playerSum, playerAceCount) {
-    while (playerSum > 21 && playerAceCount > 0) {
+    while (playerSum > 21 && playerAceCount > 0) { // us having a positive player ace count indicates that there is an ace 
         playerSum -= 10;
         playerAceCount -= 1; // if yourAceCount was 2, it is now 1 (in terms of keeping track of YOUR aces)
     }
