@@ -122,7 +122,7 @@ function checkAce(card) {
 function Hit() {
     if (!canHit) { // remember, canHit is automatically true in boolean, so we are establishing first what happens if it is false, 
         //which is it returns and does nothing
-        return; // meaning it wont add a card like said below
+        return; // meaning it wont add a card like said below, function stops executing here 
     } // else 
 
     // we had the while loop take care of the dealer cards, the hit() function is just for the player, in which this is where we gamble
@@ -141,7 +141,7 @@ function Hit() {
 
 
 function Stay() {
-dealerSum = reduceAce(dealerSum, dealerAceCount); // now we are equating the sums to reduceAce, to MODIFY OUR SUMS in accordance of if we hold an ace
+dealerSum = reduceAce(dealerSum, dealerAceCount); // now we are, again, equating the sums to reduceAce, to MODIFY OUR SUMS in accordance of if we hold an ace
 yourSum = reduceAce(yourSum, yourAceCount);
 
 canHit = false; // can't hit anymore

@@ -72,24 +72,24 @@ function startGame() {
          
              cardTwo.src = './cards/' + cardSelected1
        
-            //  if (card1 > card2) {
-              // playerScore ++
-             //} else if (card1 < card2) {
-               //compScore ++
-             //} else (card1 == card2) 
-               // playerScore ++
-                // compScore ++
+             if (card1 > card2) {
+               playerScore ++
+             } else if (card1 < card2) {
+               compScore ++
+             } else (card1 == card2) 
+                playerScore ++
+                 compScore ++
  
          
-          //    winner = ""
+             winner = ""
        
-           //  if (playerScore > compScore) {
-             //  winner = "Phew! You win!"
-            // } else if (playerScore < compScore) {
-              // winner = "oh no, you lost!"
-             //} else (playerScore == compScore) 
-               // winner = "Woah, its a tie!"
-                // document.getElementById('results').innerText = winner
+            if (playerScore > compScore) {
+              winner = "Phew! You win! Refresh to play again"
+             } else if (playerScore < compScore) {
+              winner = "oh no, you lost! Refresh to try again"
+             } else (playerScore == compScore) 
+               winner = "Woah, its a tie! Refresh to try again"
+                 document.getElementById('results').innerText = winner
              
 
                
