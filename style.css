@@ -39,3 +39,23 @@ border-radius: 50px;
     bottom: 0;
     z-index: -1;
 }
+
+.navbar .links {
+    font-weight: bold;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: 'Poppins';
+}
+
+.navbar:hover {
+    color: red;
+}
+
+.image {
+   width: 50px;
+   height: 50px;
+   font-family: 'Poppins';
+   color: #fff;
+}
