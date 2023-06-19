@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }))
 
 
+    decimal.addEventListener('click', function() {
+        addDecimal()
+    })
 
     clear.addEventListener('click', function(e) {
         previousValue = ''
@@ -54,13 +57,18 @@ function handleNumber(num) {
 
 
 
-function handleOperator (op) { // this happens first before the screen.textCOntent(s) changes are applied
+function handleOperator(op) { // this happens first before the screen.textCOntent(s) changes are applied
     operator = op // now, operator = e.target.textContent
     previousValue = currentValue  //the currentValue passes its value to the previousvalue and it empties itself, while they equa to the text content of the screens
     currentValue = ''
 }
 
 
+function addDecimal() {
+    if(!currentValue.includes(".")) {
+        currentValue += ".";
+    }
+}
 
 function calculate() {
     previousValue = Number(previousValue) // so that we can math the numbers below, now when we do += it actually adds instead of setting side by side
