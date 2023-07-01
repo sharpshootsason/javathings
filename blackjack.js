@@ -15,8 +15,6 @@ const yourCards = document.getElementById('your-cards') //grabbing the divs
 
 const dealerCards = document.getElementById('dealer-cards')
 
-const nextRound = document.getElementById('next-round')
-
 
  const startRound = document.getElementById('start-round') //button
 
@@ -37,7 +35,7 @@ function buildDeck() {
     //so for every 'types', it will look through all the values, and it will do that for each individual index of 'types'
     for (let i = 0; i < types.length; i++) {
         for (let j = 0; j < values.length; j++) {
-            deck.push(values[j] + '-' + types[i]); // this is useful now that the array matches the card file name, 2-C, 3-C... 2-S, 3-S...
+            deck.push(values[j] + '-' + types[i]); // this is useful now that the array matches the card file name, 2-C, 32-D, 2-H, 2-S, 3-C ...
         }
     }
 }
@@ -60,8 +58,8 @@ function startGame() {
         // first we establish the dealerSum
         // hidden becomes the back.png card, we reveal this card later when we hit stay
     dealerSum += getValue(hidden); //whatever random array .pop() gives us puts the value into an integer, hence dealerSum += returned integer based on components of the array
-    //getVAlue transfers the array into an integer value
-    dealerAceCount += checkAce(hidden); 
+    //getVAlue transfers the array into an integer value, thats why were able to sum immediately
+    dealerAceCount += checkAce(hidden);  //checking for ace count... literally 
 
 
     //its a loop so it will keep doing this under it hits over 17, it will go through every action and then repeat
@@ -81,7 +79,7 @@ function startGame() {
     for (let i = 0; i < 2; i++) { // itll always get 2 cards immediately, the hit function is what will give me the extra card
        let cardImg = document.createElement('img');
         let card = deck.pop(); // we declare it again because its pertaining to in the loop
-        cardImg.src = './cards/' + card + '.png';
+        cardImg.src = './cards/' + card + '.png'; // you can add properties that will change on the html as well ".src, .value"
         yourSum += getValue(card); //getVAlue and checkAce is modifying the array into a value for our counts
         yourAceCount += checkAce(card);
        yourCards.append(cardImg);
@@ -145,6 +143,7 @@ dealerSum = reduceAce(dealerSum, dealerAceCount); // now we are, again, equating
 yourSum = reduceAce(yourSum, yourAceCount);
 
 canHit = false; // can't hit anymore
+
 // for the dealer 
 document.getElementById('hidden').src = './cards/' + hidden + '.png'; //turns the BCK.png to an actual card AND it has already been added to the dealer sum as shown above
 // we are just revealing** what the value/card is here by changing the src to the originally deck.pop() hidden card 
