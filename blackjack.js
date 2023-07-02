@@ -32,7 +32,7 @@ function buildDeck() {
     deck = []
 
     //double for loop : it will go to one index of type and then loop through every array of values (it finalize when we deck.push)
-    //so for every 'types', it will look through all the values, and it will do that for each individual index of 'types'
+    // ffor every 'types', it will look through all the values, and it will do that for each individual index of 'types'
     for (let i = 0; i < types.length; i++) {
         for (let j = 0; j < values.length; j++) {
             deck.push(values[j] + '-' + types[i]); // this is useful now that the array matches the card file name, 2-C, 32-D, 2-H, 2-S, 3-C ...
@@ -47,25 +47,18 @@ function shuffleDeck() {
         let temp = deck[i]
         deck[i] = deck [j]
         deck[j] = temp;
-    } // by declaring deck[i], i am picking from the whole deck in its correct order, by looping through deck [j] i am picking out
-    // a random index . by swapping it, i am saying that the random index switches places with the ordered index, thus when the for loop
-    // is complete, I am scrambled the whole order of the deck.
+    } 
 }
 
 function startGame() {
     hidden = deck.pop(); // selects random array
-        // for the dealer
-        // first we establish the dealerSum
         // hidden becomes the back.png card, we reveal this card later when we hit stay
-    dealerSum += getValue(hidden); //whatever random array .pop() gives us puts the value into an integer, hence dealerSum += returned integer based on components of the array
-    //getVAlue transfers the array into an integer value, thats why were able to sum immediately
-    dealerAceCount += checkAce(hidden);  //checking for ace count... literally 
+    dealerSum += getValue(hidden); 
+    dealerAceCount += checkAce(hidden);  
 
 
-    //its a loop so it will keep doing this under it hits over 17, it will go through every action and then repeat
-    // remember right now dealer sum has a value because of hidden ^^^
-    while (dealerSum < 17) { // these actions below are performed as long as dealersum is less than 17, notice
-        // the += so that we are continually adding the cards while equaling the value
+
+    while (dealerSum < 17) { 
         let cardImg = document.createElement('img'); 
         let card = deck.pop(); // takes an array out ['2-C','3-C','4-C' . . .] 
         cardImg.src = './cards/' + card + ".png"
@@ -73,13 +66,13 @@ function startGame() {
         dealerAceCount += checkAce(card)
        dealerCards.append(cardImg); // we are popping cards and appending them as long as the dealersum is less than 17
        // it stops once it hits over 17
-       // by appending, we are not overriding, we are stacking img tags under an already created html tag
+       f
     }
         // for the player , getting the values for the player
     for (let i = 0; i < 2; i++) { // itll always get 2 cards immediately, the hit function is what will give me the extra card
        let cardImg = document.createElement('img');
-        let card = deck.pop(); // we declare it again because its pertaining to in the loop
-        cardImg.src = './cards/' + card + '.png'; // you can add properties that will change on the html as well ".src, .value"
+        let card = deck.pop(); 
+        cardImg.src = './cards/' + card + '.png'; 
         yourSum += getValue(card); //getVAlue and checkAce is modifying the array into a value for our counts
         yourAceCount += checkAce(card);
        yourCards.append(cardImg);
@@ -92,10 +85,10 @@ function startGame() {
 }
 
 
-// making values/integers: this is where we declare from the deck what Aces, K, Q, And J are into integers 
+
 function getValue(card) { // this is where we break down the array to get the value
     let data = card.split('-'); // splits ['4-C'] into ['4', 'C'] , remember card is just a single index that we are splitting into 2
-    let value = data[0] // [0] index of zero indicates first array, so only 4 (not C)
+    let value = data[0] // [0] index of zero indicates first array- only 4 (not C)
 
     if (isNaN(value)) {
         if (value =='A'){ 
@@ -104,8 +97,7 @@ function getValue(card) { // this is where we break down the array to get the va
         return 10;
     }
 
-    return parseInt(value); // if its not an Ace value, return the value, parseint makes it into a JS integer that can be used for adding(sums) 
-    // this is how we are able to add the sum immediately because using parseInt we are changing the string to a number.
+    return parseInt(value);  //what allows the data type to go from string to number, which allows the values to be added instead of side by side when using +=
 }
 
 
@@ -118,14 +110,13 @@ function checkAce(card) {
 }
 
 function Hit() {
-    if (!canHit) { // remember, canHit is automatically true in boolean, so we are establishing first what happens if it is false, 
-        //which is it returns and does nothing
-        return; // meaning it wont add a card like said below, function stops executing here 
+    if (!canHit) { // if canHit is false
+        return; // function stops executing here 
     } // else 
 
     // we had the while loop take care of the dealer cards, the hit() function is just for the player, in which this is where we gamble
     let cardImg = document.createElement('img'); // have to keep declaring it so that it creates the tag when we fire the function
-    let card = deck.pop(); // we declare it again because its pertaining to in the loop
+    let card = deck.pop(); 
     cardImg.src = './cards/' + card + '.png';
     yourSum += getValue(card); //however since these sums and counts are global variables, it just keeps getting added
     yourAceCount += checkAce(card);
@@ -146,7 +137,7 @@ canHit = false; // can't hit anymore
 
 // for the dealer 
 document.getElementById('hidden').src = './cards/' + hidden + '.png'; //turns the BCK.png to an actual card AND it has already been added to the dealer sum as shown above
-// we are just revealing** what the value/card is here by changing the src to the originally deck.pop() hidden card 
+// revealing** what the value/card is here by changing the src to the originally deck.pop() hidden card 
 
 let message = ""
 
