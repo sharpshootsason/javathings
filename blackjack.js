@@ -66,7 +66,7 @@ function startGame() {
         dealerAceCount += checkAce(card)
        dealerCards.append(cardImg); // we are popping cards and appending them as long as the dealersum is less than 17
        // it stops once it hits over 17
-       f
+       
     }
         // for the player , getting the values for the player
     for (let i = 0; i < 2; i++) { // itll always get 2 cards immediately, the hit function is what will give me the extra card
@@ -76,6 +76,7 @@ function startGame() {
         yourSum += getValue(card); //getVAlue and checkAce is modifying the array into a value for our counts
         yourAceCount += checkAce(card);
        yourCards.append(cardImg);
+      document.getElementById('your-sum').innerText = yourSum;
     }
 
     document.getElementById('hit').addEventListener('click', Hit);
@@ -112,7 +113,7 @@ function checkAce(card) {
 function Hit() {
     if (!canHit) { // if canHit is false
         return; // function stops executing here 
-    } // else 
+    } // else  
 
     // we had the while loop take care of the dealer cards, the hit() function is just for the player, in which this is where we gamble
     let cardImg = document.createElement('img'); // have to keep declaring it so that it creates the tag when we fire the function
@@ -126,6 +127,7 @@ function Hit() {
         // we are using reduceAce to modify our sum in accordance to our aces, giving us a chance to change the ace to value of 1 if needed
         canHit = false; // hence, it returns and does nothing, the button doesnt work anymore
     }
+    document.getElementById('your-sum').innerText = yourSum;
 }
 
 
